@@ -7,9 +7,9 @@ int main (){
 	
 	FILE *file;
 	file = fopen("sdas.txt", "r");
-	
+	printf("\n");
 	while(fgets(frase, 100, file) != NULL){
-		printf("%s", frase);
+		printf("\t\t%s", frase);
 	}
 	for (i=0; i<10; i++){
 	
