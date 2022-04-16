@@ -1,5 +1,5 @@
-playerNome=alexandre
+playerNome=Alvaro
 playerXp=0
 playerNivel=0
-playerIdade=0
+playerIdade=18
 playerFase=0
