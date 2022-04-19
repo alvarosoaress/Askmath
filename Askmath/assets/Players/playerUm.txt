@@ -1,5 +1,5 @@
-playerNome=Alvaro
+playerNome=igort
 playerXp=0
 playerNivel=0
-playerIdade=18
+playerIdade=12
 playerFase=0

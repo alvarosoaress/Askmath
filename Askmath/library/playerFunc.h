@@ -5,7 +5,10 @@
 #include<conio.h>
 #include "playerStatus.h"
 #include "utilityFunc.h"
+#ifndef _playerFuncsH_
+#define _playerFuncsH_
 
+int slotLivre = 1;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void saveState(){//sub-rotina para salvar os status atuais do jogador
@@ -18,6 +21,7 @@ void saveState(){//sub-rotina para salvar os status atuais do jogador
 			//abrindo o txt playerUm no modo "write"
 
 			fprintf(output, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerFase=%d\n",ps.playerNome,ps.playerXp, ps.playerNivel, ps.playerIdade,ps.playerFase);//escrevendo os dados dentro do txt
+
 			fclose(output);
 			break;
 
@@ -26,6 +30,7 @@ void saveState(){//sub-rotina para salvar os status atuais do jogador
 			//abrindo o txt playerDois no modo "write"
 
 			fprintf(output, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerFase=%d\n",ps.playerNome,ps.playerXp, ps.playerNivel, ps.playerIdade,ps.playerFase);//escrevendo os dados dentro do txt
+			
 			fclose(output);
 			break;
 
@@ -34,6 +39,7 @@ void saveState(){//sub-rotina para salvar os status atuais do jogador
 			//abrindo o txt playerTres no modo "write"
 
 			fprintf(output, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerFase=%d\n",ps.playerNome,ps.playerXp, ps.playerNivel, ps.playerIdade,ps.playerFase);//escrevendo os dados dentro do txt
+			
 			fclose(output);
 			break;
 
@@ -54,6 +60,11 @@ void loadState(){//sub-rotina para carregar os status atuais do jogador
 
 				fscanf(input, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerFase=%d\n",&ps.playerNome,&ps.playerXp, &ps.playerNivel, &ps.playerIdade,&ps.playerFase);
 				//lendo os dados dentro do txt e atribuindo seus valores para dentro da struct playerStatus
+				
+				if (ps.playerIdade > 0){
+				slotLivre = 0;}
+		
+				fclose(input);
 				break;
 
 			case '2':
@@ -62,6 +73,11 @@ void loadState(){//sub-rotina para carregar os status atuais do jogador
 
 				fscanf(input, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerFase=%d\n",&ps.playerNome,&ps.playerXp, &ps.playerNivel, &ps.playerIdade,&ps.playerFase);
 				//lendo os dados dentro do txt e atribuindo seus valores para dentro da struct playerStatus
+				
+				if (ps.playerIdade > 0){
+				slotLivre = 0;}
+
+				fclose(input);
 				break;
 
 			case '3':
@@ -70,6 +86,11 @@ void loadState(){//sub-rotina para carregar os status atuais do jogador
 
 				fscanf(input, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerFase=%d\n",&ps.playerNome,&ps.playerXp, &ps.playerNivel, &ps.playerIdade,&ps.playerFase);
 				//lendo os dados dentro do txt e atribuindo seus valores para dentro da struct playerStatus
+				
+				if (ps.playerIdade > 0){
+				slotLivre = 0;}
+
+				fclose(input);
 				break;
 
 			default :
@@ -133,3 +154,6 @@ void selecaoPers(void) {
 			pulaLinha(3);
 		fclose(input);
 }
+
+
+#endif

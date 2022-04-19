@@ -7,7 +7,7 @@
 #define _playerStatusH_
 
 struct playerStatus{
-	char playerNome [50];
+	char playerNome [50][50];
 	int playerNumero, playerXp, playerNivel, playerIdade, playerFase;
 };
 

@@ -1,15 +1,8 @@
 //Askmath
 
 //Include das bibliotecas
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<math.h>
-#include<conio.h>
-#include "playerStatus.h"
-#include "utilityFunc.h"
-#include "playerFunc.h"
-
+#include "library\importAll.h"
+#include "library\mundos.h"
 //Funcoes
 void opcaoUm (void);
 void jogoCreditos (void);
@@ -18,29 +11,30 @@ void jogoSair (void);
 //Variaveis globais
 
 
-//TODO tentar trocar de VAR para algum de tipo "matriz função" tipo void jogoFase[12][5] (void);
-int jogoFase[12][5];/*Um máximo de 12 fases e 5 mundos (1 mundo - 3 fases) (2 mundo - 5 fases) (3 mundo - 8 fases)
-(4 mundo - 10 fases) (5 mundo - 12 fases) */
-
-
 //Int Main
 int main(){
-	
+	int i,j;
+	UINT CPAGE_UTF8 = 65001;
+    UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+    SetConsoleOutputCP(CPAGE_UTF8);// tudo isso ai pra colocar acento
+
+	tamanhoTela(800,600);
 	char escolha;//escolha que o jogador ira fazer na telaPrincipal
-	ps.playerNumero = '1';//!MUDAR ISSO
-	loadState();
+
+	for ( i = 0; i < 5; i++){
+	for ( j = 0; j < 5; j++){
+		printf("|%i|", jogoFase[i][j]);}
+	printf("\n---------------------");
+    printf("\n");}
 	
-	printf("\n%i\n", ps.playerIdade);
+	getch();
 	mostrarTela (telaInicial,1,0);
-	loadingPonto("Carrgeando");
-	pulaLinha(2);
-	typeWriter ("Ola Mundo");
-	//printf("%s", ps.playerNome);
+
 	getchar();
 
 	
 	system("cls");
-	mostrarTela (telaPrincipal,1,0);
+	mostrarTela (telaPrincipal,0,0);
 
 	
 	while((escolha > 3) || (escolha < 1)){
@@ -74,19 +68,39 @@ int main(){
 	
 	getchar();
 	return 0;
+	SetConsoleOutputCP(CPAGE_DEFAULT);//acento tbm aceita ai
 }
 
 //=======================================================================================
 void opcaoUm (void){
-//mostrarTela(jogoInicio, 3,20);
-caixaDia ("Bom dia seu pilantra",3,20);
-getch();
-mostrarTela(jogoInicio2,0,0);
-getch();
-mostrarTela(jogoInicio3,0,0);
-getch();
-mostrarTela(telaselecaoPers, 0,0);
-getch();
+
+	mostrarTela(telaselecaoPers,0,0);//mostra o cabeçalho da seleção de personagens
+		pulaLinha(2);
+		selecaoPers();//mostra a tela de personagens disponíveis, se não existir, existirá "slot livre"
+		ps.playerNumero = getch();//pega qual personagem o usuário deseja jogar
+		loadState();
+		system("cls");
+//	system("cls");
+
+	if (slotLivre == 1){
+	mostrarTela(jogoInicio, 3,20);
+		gets(ps.playerNome);
+	system("cls");
+
+	mostrarTela(jogoInicio2,3,20);
+	getch();
+	system("cls");
+
+	mostrarTela(jogoInicio3,3,20);
+		scanf("%d", &ps.playerIdade);
+		saveState();
+	system("cls");}
+
+	else{
+		//menuPrincipal();
+	}
+	getch();
+
 }
 //=======================================================================================
 void jogoCreditos(){

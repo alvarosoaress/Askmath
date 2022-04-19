@@ -7,13 +7,6 @@
 #ifndef _utilityFuncH_
 #define _utilityFuncH_
 
-//=======================================================================================
-char telaInicial[] = "C:\\Users\\Administrator\\Documents\\GitHub\\Geobuild\\Askmath\\assets\\Telas\\telaInicial.txt";
-char telaPrincipal[]= "C:\\Users\\Administrator\\Documents\\GitHub\\Geobuild\\Askmath\\assets\\Telas\\telaPrincipal.txt";
-char telaselecaoPers []= "C:\\Users\\Administrator\\Documents\\GitHub\\Geobuild\\Askmath\\assets\\Telas\\selecaoPers.txt";
-char jogoInicio []= "C:\\Users\\Administrator\\Documents\\GitHub\\Geobuild\\Askmath\\assets\\Telas\\jogoInicio.txt";
-char jogoInicio2[]= "C:\\Users\\Administrator\\Documents\\GitHub\\Geobuild\\Askmath\\assets\\Telas\\jogoInicio2.txt";
-char jogoInicio3[]= "C:\\Users\\Administrator\\Documents\\GitHub\\Geobuild\\Askmath\\assets\\Telas\\jogoInicio3.txt";
 
 //=======================================================================================
 void pulaLinha (int l){
@@ -32,7 +25,7 @@ int i=0;
 }
 //=======================================================================================
 void mostrarTela (char tela[], int tab, int linha){//Tela Inicial do nosso jogo (ainda sem as opções de escolha)
-    char carac [100][100];
+    char carac [100];
 	FILE *file;//Ponteiro da função FILE para o nome "file"
 	file = fopen(tela, "r");/*Função fopen
 	para abrir o arquivo txt que está localizado a ASCII art da tela inicial*/
@@ -47,13 +40,14 @@ void mostrarTela (char tela[], int tab, int linha){//Tela Inicial do nosso jogo 
 }
 //=======================================================================================
 void loadingPonto (char frase[]){
-
     printf("%s", frase);
     int i =0;
-   
+    
     for (i=0; i<5; i++){
     printf(".");
-    _sleep(250);}
+    _sleep(250);
+    }
+    
 }
 //=======================================================================================
 void typeWriter (char frase[]){
@@ -70,24 +64,45 @@ void typeWriter (char frase[]){
         i++;
     }
 }
-void caixaDia (char frase[], int tab, int linha){//Tela Inicial do nosso jogo (ainda sem as opções de escolha)
-    char carac [100][100];
+//=======================================================================================
+/*void caixaDia (char frase[], int tab, int linha){//Tela Inicial do nosso jogo (ainda sem as opções de escolha)
+    char carac [100];
+    char c;
+
     //42 - 43 carac por linha
 	FILE *file;//Ponteiro da função FILE para o nome "file"
-	file = fopen("C:\\Users\\Administrator\\Documents\\GitHub\\Geobuild\\Askmath\\assets\\Telas\\caixaDialogo.txt", "r");/*Função fopen
-	para abrir o arquivo txt que está localizado a ASCII art da tela inicial*/
+	file = fopen("C:\\Users\\Administrator\\Documents\\GitHub\\Geobuild\\Askmath\\assets\\Telas\\caixaDialogo.txt", "r");
     int i =0;
    pulaLinha(linha);
-	while(fgets(carac, 100, file) != NULL){//printando o txt na tela do usuário
+
+ 	while(fgets(carac, 100, file) != NULL){//printando o txt na tela do usuário
 		 espTab(tab);
-         if (carac == "§"){
-            printf("%s", frase);
-        }
-        else{
-            printf("%s", carac);// o /t para tentar centralizar o desenho
-        }
+        printf("%s", carac);// o /t para tentar centralizar o desenho
 	}
 
-	fclose(file);//fechando o arquivo e liberando memória após seu uso
+	while((c = fgetc(file)) != EOF){//printando o txt na tela do usuário
+		 espTab(tab);
+         if (c == '$'){ 
+             printf("AAAAAAAAAAAAAAAAAAA\n");
+         }
+        }
+	
+
+	fclose(file);}//fechando o arquivo e liberando memória após seu uso
+*/
+//=======================================================================================
+void tamanhoTela (int x,int y){
+
+    HANDLE hConsoleOutput;
+    COORD coord;
+    CONSOLE_SCREEN_BUFFER_INFO  ConsoleInfo;
+    HWND console = GetConsoleWindow();
+    hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+    GetConsoleScreenBufferInfo(hConsoleOutput, &ConsoleInfo);
+
+    SetConsoleScreenBufferSize(hConsoleOutput, coord);
+ 
+    MoveWindow(console, 325, 120, x, y, TRUE);
+
 }
 #endif
