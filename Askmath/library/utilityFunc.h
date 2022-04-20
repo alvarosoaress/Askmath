@@ -50,16 +50,16 @@ void loadingPonto (char frase[]){
     
 }
 //=======================================================================================
-void typeWriter (char frase[]){
+void typeWriter (char frase[], int velocidade, int velocidadeEspaco){
     int i =0;
     while (frase[i] != '\0')
     {
         printf("%c", frase[i]);
-        if(frase[i] == ' '){
-            _sleep(250);
+         if(frase[i] == ' '){
+            _sleep(50/velocidadeEspaco);
         }
-        else{
-            _sleep(100);
+        else{ 
+            _sleep(100/velocidade);
         }
         i++;
     }

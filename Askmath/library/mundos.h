@@ -14,40 +14,84 @@
 #ifndef _mundosH_
 #define _mundosH_
 
-#define TAM 10
 
 int l=0,c=0; // l = linha / c = coluna -> jogoFase[l][c];
 
-const int mundo11 = TAM;
-const int mundo21 = TAM;
-const int mundo31 = TAM;
-const int mundo41 = TAM;
-const int mundo51 = TAM;
-const int mundo22 = TAM;
-const int mundo32 = TAM;
-const int mundo42 = TAM;
-const int mundo52 = TAM;
-const int mundo33 = TAM;
-const int mundo43 = TAM;
-const int mundo53 = TAM;
-const int mundo44 = TAM;
-const int mundo54 = TAM;
-const int mundo35 = TAM;
-const int mundo55 = TAM;
+const int x = 0;
 
-const int x = 99;
-
-int jogoFase[5][5] = {mundo11, mundo21, mundo31, mundo41, mundo51,
-                        x,     mundo22, mundo32, mundo42, mundo52,
-                        x,         x,   mundo33, mundo43, mundo53,
-                        x,         x,      x,    mundo44, mundo54,
-                        x,         x,      x,       x,    mundo55,};
+ int jogoFase[5][5] = { 11, 21, 31, 41, 51,
+                        x,  22, 32, 42, 52,
+                        x,  x,  33, 43, 53,
+                        x,  x,  x,  44, 54,
+                        x,  x,  x,  x,  55 };
                         
- /*Um máximo de 12 fases e 5 mundos (1 mundo - 3 fases) (2 mundo - 5 fases) (3 mundo - 8 fases)
-(4 mundo - 10 fases) (5 mundo - 12 fases) */
+ /*Um total de 15 fases e 5 mundos (1 mundo - 1 fase) (2 mundo - 2 fases) (3 mundo - 3 fases)
+(4 mundo - 4 fases) (5 mundo - 5 fases) */
+void escolhaFase (int l, int c){
+switch (jogoFase[l][c]){
 
+    case 11:
+        fase11();
+        break;
+    
+/*     case 21:
+        fase21();
+        break;
 
+    case 22:
+        fase22();
+        break;
 
+    case 31:
+        fase31();
+        break;
+
+    case 32:
+        fase32();
+        break;
+
+    case 33:
+        fase33();
+        break;
+
+    case 41:
+        fase41();
+        break;
+    
+    case 42:
+        fase42();
+        break;
+
+    case 43:
+        fase43();
+        break;
+
+    case 44:
+        fase44();
+        break;
+
+    case 51:
+        fase51();
+        break;
+
+    case 52:
+        fase52();
+        break;
+        
+    case 53:
+        fase53();
+        break;
+
+    case 54:
+        fase54();
+        break;
+
+    case 55:
+        fase55();
+        break; */
+
+}
+}
 
 
 #endif

@@ -11,3 +11,4 @@
 #include "playerFunc.h"
 #include "telasDir.h"
 #include "mundos.h"
+#include "fases.h"

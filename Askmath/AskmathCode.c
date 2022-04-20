@@ -21,11 +21,12 @@ int main(){
 	tamanhoTela(800,600);
 	char escolha;//escolha que o jogador ira fazer na telaPrincipal
 
-	for ( i = 0; i < 5; i++){
+	escolhaFase(0,0);
+	/* for ( i = 0; i < 5; i++){
 	for ( j = 0; j < 5; j++){
 		printf("|%i|", jogoFase[i][j]);}
 	printf("\n---------------------");
-    printf("\n");}
+    printf("\n");} */
 	
 	getch();
 	mostrarTela (telaInicial,1,0);
