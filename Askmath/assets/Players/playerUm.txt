@@ -1,5 +1,5 @@
-playerNome=igort
+playerNome=alexandre
 playerXp=0
 playerNivel=0
-playerIdade=12
+playerIdade=2
 playerFase=0

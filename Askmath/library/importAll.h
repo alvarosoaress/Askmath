@@ -6,9 +6,8 @@
 #include<math.h>
 #include<conio.h>
 
-#include "playerStatus.h"
-#include "utilityFunc.h"
-#include "playerFunc.h"
-#include "telasDir.h"
-#include "mundos.h"
-#include "fases.h"
+#include "import\playerStatus.h"
+#include "import\utilityFunc.h"
+#include "import\playerFunc.h"
+#include "import\telasDir.h"
+#include "import\mundos.h"

@@ -4,9 +4,9 @@
                                  |   |  /|
     .----------------------------------' |
    /  .-.                                |
-  |  /   \    Selecao de personagens     |
+  |  /   \    Seleção de personagens     |
   | |\_.  |                              |
-  |\|  | /|     Digite o numero de       |
+  |\|  | /|     Digite o número de       |
   | `---' |    qual personagem deseja    |
   |       |           jogar:             |
   |       |                             /

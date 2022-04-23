@@ -1,7 +1,7 @@
    __| |_____________________________________________| |__
   (__   _____________________________________________   __)
      | |                                             | |
-     | | Ola, seja muito bem-vindo(a) ao nosso jogo! | |
+     | | Olá, seja muito bem-vindo(a) ao nosso jogo! | |
      | |                                             | |
      | | Para comecar, nos conte seu nome:           | |
    __| |_____________________________________________| |__
