@@ -8,7 +8,7 @@
 
 struct playerStatus{
 	char playerNome [50][50];
-	int playerNumero, playerXp, playerNivel, playerIdade, playerFase;
+	int playerNumero, playerXp, playerNivel, playerIdade, playerFase, playerMundo;
 };
 
 struct playerStatus ps;

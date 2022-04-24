@@ -20,11 +20,12 @@ int l=0,c=0; // l = linha / c = coluna -> jogoFase[l][c];
 
 const int x = 0;
 
- int jogoFase[5][5] = { 11, 21, 31, 41, 51,
-                        x,  22, 32, 42, 52,
-                        x,  x,  33, 43, 53,
-                        x,  x,  x,  44, 54,
-                        x,  x,  x,  x,  55 };
+int jogoFase[5][5] = { 00, 01, 02, 03, 04,    //   11, 21, 31, 41, 51,
+                        x,  11, 12, 13, 14,   //    x, 22, 32, 42, 52,
+                        x,  x,  22, 23, 24,   //    x,  x, 33, 43, 53,
+                        x,  x,  x,  33, 34,   //    x,  x,  x, 44, 54,
+                        x,  x,  x,  x,  44 }; //    x,  x,  x,  x, 55, 
+                  
                         
  /*Um total de 15 fases e 5 mundos (1 mundo - 1 fase) (2 mundo - 2 fases) (3 mundo - 3 fases)
 (4 mundo - 4 fases) (5 mundo - 5 fases) */
@@ -32,65 +33,64 @@ void escolhaFase (int l, int c){
     
 switch (jogoFase[l][c]){
 
-    case 11:
-        if (fase11() == 1){
-            ps.playerXp += 10;
-        }
+    case 0:
+        coracao = 3;
+        fase11();
         break;
     
-/*     case 21:
+     case 1:
         fase21();
         break;
 
-    case 22:
+/*    case 11:
         fase22();
         break;
 
-    case 31:
+    case 2:
         fase31();
         break;
 
-    case 32:
+    case 12:
         fase32();
         break;
 
-    case 33:
+    case 22:
         fase33();
         break;
 
-    case 41:
+    case 3:
         fase41();
         break;
     
-    case 42:
+    case 13:
         fase42();
         break;
 
-    case 43:
+    case 23:
         fase43();
         break;
 
-    case 44:
+    case 33:
         fase44();
         break;
 
-    case 51:
+    case 4:
         fase51();
         break;
 
-    case 52:
+    case 14:
         fase52();
         break;
         
-    case 53:
+    case 24:
         fase53();
         break;
 
-    case 54:
+    case 34:
         fase54();
         break;
 
-    case 55:
+    case 44:
         fase55();
         break; */
 

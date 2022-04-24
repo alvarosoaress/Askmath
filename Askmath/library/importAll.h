@@ -11,3 +11,4 @@
 #include "import\playerFunc.h"
 #include "import\telasDir.h"
 #include "import\mundos.h"
+#include "import\menuPrincipal.h"

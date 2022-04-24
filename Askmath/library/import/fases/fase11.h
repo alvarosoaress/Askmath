@@ -7,7 +7,10 @@
 #include<conio.h>
 
 #include "utilityFases.h"
-int twtime = 3;//função para controlar o tempo das animações de print
+
+#ifndef _fase11H_
+#define _fase11H_
+
 void fase11Header (void){//função para printar o cabeçalho da pergunta
     pulaLinha(3);
 
@@ -42,15 +45,33 @@ while (resposta != '3'){//caso a resposta seja diferente da certa (nesse caso é
     fase11Header ();
     fase11Perguntas ();
     twtime = -1;//igualando o parametro de tempo para -1 para que quando o player erre, não aconteca toda uma nova animação novamente
-    printf("CORACAO: %d\n", coracao);
+    printf("\n\n\n\n\n\n\n%53s%d\n","Corações: ",coracao);
     playerCoracao(coracao);
         resposta = getch();
 
         if (resposta == '3'){//if para acerto
             system("cls");
+            twtime = 3;
+            ps.playerXp+=10;
             fase11Header ();
             faseResposta (10);//10 passado como parametro de quantos xp o player irá ganhar
-            return(1);
+            if (ps.playerMundo <= 1){//verificando o progresso atual do palyer
+                ps.playerMundo = 0;//atribuindo ao player em que mundo ele parou
+            }
+            if((ps.playerMundo <= 1) && (ps.playerFase <= 1))
+            {
+                ps.playerFase = 1;//atribuindo ao player em que fase ele parou
+            }
+            saveState();
+            printf("Escolha uma opção:\n1 - Continuar jogo\n2 - Voltar ao menu principal\n");
+            escolha = getch();
+            if (escolha == '1'){
+            escolhaFase(0,1);
+            }
+            else{
+                saveState();
+                menuPrincipal();
+            }
     }
         else{//else para se o player errar
             coracao--;
@@ -61,8 +82,10 @@ else{
     system("cls");
     playerCoracao(0);
     gameover();
+    getch();
     break;
 }
 }
 
 }
+#endif

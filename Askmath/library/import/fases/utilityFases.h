@@ -7,7 +7,8 @@
 #define _utilityFasesH_
 
 int coracao = 3;
-
+int twtime = 3;//função para controlar o tempo das animações de print
+int escolha = 0;
 void twDialogo (char frase[], int tempo, int tab){//função para colocar animado na tela uma frase no estilo typeWriter
     int i =0;
 
@@ -21,7 +22,7 @@ void twDialogo (char frase[], int tempo, int tab){//função para colocar animad
         }
         else{ 
             if (tempo != 0){
-            //_sleep(tempo+2);//se for um caracter, irá demorar mais tempo, simulando a digitação humana
+           // _sleep(tempo+2);//se for um caracter, irá demorar mais tempo, simulando a digitação humana
         }
         }
         i++;
@@ -49,7 +50,7 @@ int playerCoracao (int){//printa os coraçõees autais do player
 switch(coracao){
 
     case 3: //a cada vez que ele erra uma pergunta, a contagem desce
-        pulaLinha(8);
+        pulaLinha(1);
     twDialogo("    ,''', ,''',  ,''', ,''',  ,''', ,''', \n",1,3);
     twDialogo("    ',   '   ,'  ',   '   ,'  ',   '   ,' \n",1,3);
     twDialogo("      ',   ,'      ',   ,'      ',   ,'   \n",1,3);
@@ -57,7 +58,7 @@ switch(coracao){
     break;
 
     case 2:
-        pulaLinha(8);
+        pulaLinha(1);
     twDialogo("  ,''',          ,''', ,''',  ,''', ,''', \n",0,3);
     _sleep(220);//sleep para printar a fileira inteira ao inves de caracter por caracter
     twDialogo("  ',   \\  ,''',  ',   '   ,'  ',   '   ,' \n",0,3);
@@ -70,7 +71,7 @@ switch(coracao){
     break;
 
     case 1:
-        pulaLinha(8);
+        pulaLinha(1);
     twDialogo("   ,''',         ,''',          ,''', ,''', \n",0,3);
     _sleep(220);
     twDialogo("   ',   \\  ,''', ',   \\  ,''',  ',   '   ,' \n",0,3);
@@ -104,6 +105,9 @@ twDialogo("  ▐█ ▀ ▪▐█ ▀█ ·██ ▐███▪▀▄.▀·   
 twDialogo("  ▄█ ▀█▄▄█▀▀█ ▐█ ▌▐▌▐█·▐▀▀▪▄     ▄█▀▄ ▐█▐█•▐▀▀▪▄▐▀▀▄     ▐█·\n",0,2);
 twDialogo("  ▐█▄▪▐█▐█ ▪▐▌██ ██▌▐█▌▐█▄▄▌    ▐█▌.▐▌ ███ ▐█▄▄▌▐█•█▌    .▀ \n",0,2);
 twDialogo("  ·▀▀▀▀  ▀  ▀ ▀▀  █▪▀▀▀ ▀▀▀      ▀█▄▀▪. ▀   ▀▀▀ .▀  ▀     ▀ \n",0,2);
-
+typeWriter("\n\n\n\t\t  -Aperte qualquer tecla para voltar ao menu principal-\n",1,1);
+coracao = 3;
+getch();
+menuPrincipal();
 }
 #endif

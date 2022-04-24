@@ -2,4 +2,5 @@ playerNome=alexandre
 playerXp=0
 playerNivel=0
 playerIdade=2
+playerMundo=0
 playerFase=0

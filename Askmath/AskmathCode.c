@@ -91,7 +91,7 @@ void opcaoUm (void){
 	system("cls");}
 
 	else{
-		//menuPrincipal();
+		menuPrincipal();
 	}
 	getch();
 
