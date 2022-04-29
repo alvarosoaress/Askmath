@@ -18,11 +18,11 @@ void twDialogo (char frase[], int tempo, int tab){//função para colocar animad
     {
         printf("%c", frase[i]);//printando cara caracter
          if(frase[i] == ' '){//caso seja um espaço irá demorar um tempo diferente
-            //_sleep(tempo);
+            _sleep(tempo);
         }
         else{ 
             if (tempo != 0){
-           // _sleep(tempo+2);//se for um caracter, irá demorar mais tempo, simulando a digitação humana
+            _sleep(tempo+2);//se for um caracter, irá demorar mais tempo, simulando a digitação humana
         }
         }
         i++;
@@ -45,7 +45,7 @@ void faseResposta (int xp){//função para exibir a caixa de resposta correta ca
         twDialogo("     -+*+-+*+-+*+-+*+-+*+-\n",1,4);
     } 
 //=======================================================================================
-int playerCoracao (int){//printa os coraçõees autais do player
+int playerCoracao (int n1){//printa os coraçõees autais do player
 
 switch(coracao){
 
