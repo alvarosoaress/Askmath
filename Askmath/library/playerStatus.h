@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<math.h>
+#include<conio.h>
+
+#ifndef _playerStatusH_
+#define _playerStatusH_
+
+struct playerStatus{
+	char playerNome [20];
+	int playerNumero, playerXp, playerNivel, playerIdade, playerFase, playerMundo;
+};
+
+struct playerStatus ps;
+
+#endif

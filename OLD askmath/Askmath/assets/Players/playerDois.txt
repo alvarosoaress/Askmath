@@ -1,0 +1,6 @@
+playerNome=alvaro
+playerXp=0
+playerNivel=0
+playerIdade=45
+playerMundo=0
+playerFase=0

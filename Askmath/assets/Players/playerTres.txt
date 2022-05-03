@@ -1,5 +1,6 @@
-playerNome=halry
+playerNome=calvaro
 playerXp=0
 playerNivel=0
-playerIdade=0
+playerIdade=7
+playerMundo=0
 playerFase=0

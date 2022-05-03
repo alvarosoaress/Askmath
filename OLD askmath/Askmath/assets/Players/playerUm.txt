@@ -1,0 +1,6 @@
+playerNome=alexandre
+playerXp=10
+playerNivel=0
+playerIdade=2
+playerMundo=0
+playerFase=1
