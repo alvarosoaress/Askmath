@@ -1,5 +1,5 @@
-playerNome=alvaro
-playerCoracao=3
-playerIdade=0
-playerMundo=0
+playerNome=gyhjk
+playerCoracao=0
+playerIdade=3
+playerMundo=2
 playerFase=0

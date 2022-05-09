@@ -46,7 +46,7 @@ int jogoFase[5][5] = { 00, 01, 02, 03, 04,    //   11, 21, 31, 41, 51,
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/tutorial.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -61,7 +61,7 @@ int jogoFase[5][5] = { 00, 01, 02, 03, 04,    //   11, 21, 31, 41, 51,
 		delay = timer;
 
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
 
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
@@ -142,7 +142,7 @@ int fase01(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/adicao01.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -156,7 +156,7 @@ int fase01(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -236,7 +236,7 @@ int fase11(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/adicao11.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -250,7 +250,7 @@ int fase11(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -330,7 +330,7 @@ int fase02(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/subtracao02.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -422,7 +422,7 @@ int fase12(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/subtracao12.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -436,7 +436,7 @@ int fase12(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -517,7 +517,7 @@ int fase22(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/subtracao22.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -531,7 +531,7 @@ int fase22(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -612,7 +612,7 @@ int fase03(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/multiplicacao03.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -626,7 +626,7 @@ int fase03(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -706,7 +706,7 @@ int fase13(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/multiplicacao13.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -720,7 +720,7 @@ int fase13(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -801,7 +801,7 @@ int fase23(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/multiplicacao23.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -815,7 +815,7 @@ int fase23(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -896,7 +896,7 @@ int fase33(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/multiplicacao33.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -910,7 +910,7 @@ int fase33(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -991,7 +991,7 @@ int fase04(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/divisao04.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -1005,7 +1005,7 @@ int fase04(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -1086,7 +1086,7 @@ int fase14(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/divisao14.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -1100,7 +1100,7 @@ int fase14(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -1181,7 +1181,7 @@ int fase24(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/divisao24.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -1195,7 +1195,7 @@ int fase24(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -1276,7 +1276,7 @@ int fase34(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/divisao34.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -1290,7 +1290,7 @@ int fase34(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -1372,7 +1372,7 @@ int fase44(BITMAP *buffer){
 
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
-    
+    loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/divisao44.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
@@ -1386,7 +1386,7 @@ int fase44(BITMAP *buffer){
 		clear(buffer);
 		delay = timer;
             if (ps.playerCoracao <= 0){
-                ps.playerCoracao = 1;
+                ps.playerCoracao = 0;
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
