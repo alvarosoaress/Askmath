@@ -1,5 +1,5 @@
-playerNome=zsda
+playerNome=sada
 playerCoracao=3
-playerIdade=0
+playerIdade=2
 playerMundo=0
 playerFase=0

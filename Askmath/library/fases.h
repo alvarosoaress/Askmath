@@ -76,7 +76,7 @@ int jogoFase[5][5] = { 00, 01, 02, 03, 04,    //   11, 21, 31, 41, 51,
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
         
 
         //OPÇÃO 1
@@ -176,7 +176,7 @@ int fase01(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -274,7 +274,7 @@ int fase11(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -368,7 +368,7 @@ int fase02(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -467,7 +467,7 @@ int fase12(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -566,7 +566,7 @@ int fase22(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -667,7 +667,7 @@ int fase03(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -765,7 +765,7 @@ int fase13(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -864,7 +864,7 @@ int fase23(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -963,7 +963,7 @@ int fase33(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -1064,7 +1064,7 @@ int fase04(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -1163,7 +1163,7 @@ int fase14(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -1262,7 +1262,7 @@ int fase24(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -1361,7 +1361,7 @@ int fase34(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -1461,7 +1461,7 @@ int fase44(BITMAP *buffer){
 
         botaoMenuprincipal(buffer);
 
-        timerResposta(buffer, 15); //temporizador para resposta 
+        timerResposta(buffer, 20); //temporizador para resposta 
 
 
         //OPÇÃO 1
@@ -1646,7 +1646,7 @@ int timerResposta(BITMAP *buffer, int segs){
         msTimer = 36;
     }
     else{
-        msTimer = 50;
+        msTimer = 60;
     }
 
     install_int_ex(tempofill, MSEC_TO_TIMER(msTimer));// contando 1 seg a cada 1 seg para o "relogio"
@@ -1655,8 +1655,8 @@ int timerResposta(BITMAP *buffer, int segs){
 		limiteRect = 630+tfill;}
 
         if(timerms%10 == 0){
-        if(r!=255) r += 5;
-        if(r==255 && g!= 0)  g -= 6;}
+        if(r!=255) r += 3;
+        if(r==255 && g!= 0)  g -= 4;}
 
         if(limiteRect == 1042){ps.playerFase = 0; gifGameOver(buffer);}
 
