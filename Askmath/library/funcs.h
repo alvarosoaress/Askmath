@@ -83,7 +83,7 @@ int telaInicial(BITMAP *buffer){
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int mouse (BITMAP *buffer){
-	BITMAP* ponteiro = load_bitmap("assets/cursor/cursorpica.bmp", NULL);//importando o ponteiro para VAR ponteiro
+	BITMAP* ponteiro = load_bitmap("assets/cursor/cursor.bmp", NULL);//importando o ponteiro para VAR ponteiro
 		
 		set_mouse_sprite(ponteiro);
 		draw_sprite(buffer, ponteiro, mouse_x-1, mouse_y);//desenhando o mouse no buffer
@@ -340,7 +340,7 @@ int gifAcerto (BITMAP *buffer){
 
 		draw_sprite(buffer, fv[frame_atual], 470, 350);
 
-		if(mouse_b == 1){escolhaFase(ps.playerFase, ps.playerMundo);}
+		if(mouse_b == 1){rest(100);escolhaFase(ps.playerFase, ps.playerMundo);}
 
 
 	destroy_bitmap (fv[0]);
@@ -377,6 +377,7 @@ int gifCaveira (BITMAP *buffer){
 
 		draw_sprite(buffer, fv[frame_atual], 400, 200);
 
+		if(mouse_b==1){telaMenuPrincipal(buffer);}
 
 	destroy_bitmap (fv[0]);
 	destroy_bitmap (fv[1]);
@@ -387,6 +388,36 @@ int gifCaveira (BITMAP *buffer){
 	destroy_bitmap (fv[6]);
 	destroy_bitmap (fv[7]);
 	destroy_bitmap (fv[8]);
+}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+int gifTelafinal (BITMAP *buffer){
+	int i=0;
+	int num_frames = 6;
+	int frame_atual = 0;
+	int tempo_de_troca = 20;
+	BITMAP* fv[6];
+
+	 fv[0] = load_bitmap("assets/gifs/gifTelafinal/confetti0.bmp", NULL);
+	 fv[1] = load_bitmap("assets/gifs/gifTelafinal/confetti1.bmp", NULL);
+	 fv[2] = load_bitmap("assets/gifs/gifTelafinal/confetti2.bmp", NULL);
+	 fv[3] = load_bitmap("assets/gifs/gifTelafinal/confetti3.bmp", NULL);
+	 fv[4] = load_bitmap("assets/gifs/gifTelafinal/confetti4.bmp", NULL);
+	 fv[5] = load_bitmap("assets/gifs/gifTelafinal/confetti5.bmp", NULL);
+
+		rest(50);
+		frame_atual = (timerms / tempo_de_troca) % num_frames;
+
+		draw_sprite(buffer, fv[frame_atual], 470, 350);
+
+		if(mouse_b==1){telaMenuPrincipal(buffer);}
+
+
+	destroy_bitmap (fv[0]);
+	destroy_bitmap (fv[1]);
+	destroy_bitmap (fv[2]);
+	destroy_bitmap (fv[3]);
+	destroy_bitmap (fv[4]);
+	destroy_bitmap (fv[5]);
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  int gifGameOver (BITMAP *buffer){
@@ -508,7 +539,9 @@ int x = 0, y = 0, i;
 		mouse_y > 40 && mouse_y <= 180){//aparece um tra�ado preto aqui
 		draw_sprite(buffer, hover, 43, 40);
 			if (mouse_b == 1){
+				rest(100);
 				 escolhaFase(ps.playerFase, ps.playerMundo);
+				 rest(25);
 			}
 		}
 
@@ -517,7 +550,9 @@ int x = 0, y = 0, i;
 		mouse_y > 218 && mouse_y <= 340){//aparece um tra�ado preto aqui
 		draw_sprite(buffer, hover, 43, 217);
 		if (mouse_b == 1){
+				rest(100);
 				 telaSelecaoPers(buffer);
+				 rest(25);
 			}
 		}
 
@@ -525,6 +560,11 @@ int x = 0, y = 0, i;
 		if(mouse_x > 52 && mouse_x <= 600 && //quando o mouser der hover aqui
 		mouse_y > 396 && mouse_y <= 518){//aparece um tra�ado preto aqui
 		draw_sprite(buffer, hover, 40, 391);
+		if (mouse_b == 1){
+				rest(100);
+				 telaMundos(buffer);
+				 rest(100);
+			}
 		}
 
 		//BOTÃO SAIR
@@ -550,6 +590,202 @@ int x = 0, y = 0, i;
 	destroy_bitmap(hover);
 	destroy_font(firasans_16);
 
+}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+int telaMundos(BITMAP *buffer){
+	
+int x = 0, y = 0, i;
+
+	BITMAP* fundo = load_bitmap("assets/telas/askmathMUNDOS.bmp", NULL);
+	
+		while(!key[KEY_F10])
+	{
+		clear(buffer);
+		delay = timer;
+
+		if(key[KEY_ESC]) {telaInicial(buffer);}
+
+		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
+		
+		//MUNDO 01
+		if(mouse_x > 18 && mouse_x <= 247 && 
+		mouse_y > 17 && mouse_y <= 244){//aparece um tra�ado preto aqui
+			if (mouse_b == 1){
+				rest(100);
+				 fase01(buffer);
+				 rest(100);
+			}
+		}
+
+		//MUNDO 11
+		if(mouse_x > 78 && mouse_x <= 195 && 
+		mouse_y > 257 && mouse_y <= 375){//aparece um tra�ado preto aqui
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=1 && ps.playerMundo >= 1){
+				 fase11(buffer);
+				 rest(100);}
+				 else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 02
+		if(mouse_x > 342 && mouse_x <= 572 && 
+		mouse_y > 17 && mouse_y <= 244){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=0 && ps.playerMundo >= 2){
+				 fase02(buffer);
+				 rest(100);}
+				 else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 12
+		if(mouse_x > 396 && mouse_x <= 513 && 
+		mouse_y > 257 && mouse_y <= 375){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=1 && ps.playerMundo >= 2){
+				fase12(buffer);
+				rest(100);}
+				else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 22
+		if(mouse_x > 396 && mouse_x <= 513 && 
+		mouse_y > 370 && mouse_y <= 486){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=2 && ps.playerMundo >= 2){
+			 	fase22(buffer);
+				 rest(100);}
+				 else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 03
+		if(mouse_x > 667 && mouse_x <= 897 && 
+		mouse_y > 17 && mouse_y <= 244){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=0 && ps.playerMundo >= 3){
+				 fase03(buffer);
+				 rest(100);}
+				 else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+		
+		//MUNDO 13
+		if(mouse_x > 714 && mouse_x <= 831 && 
+		mouse_y > 257 && mouse_y <= 370){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=1 && ps.playerMundo >= 3){
+				fase13(buffer);
+				rest(100);}
+				else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 23
+		if(mouse_x > 714 && mouse_x <= 831 && 
+		mouse_y > 375 && mouse_y <= 486){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=2 && ps.playerMundo >= 3){
+				 fase23(buffer);
+				 rest(100);}
+				 else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 33
+		if(mouse_x > 714 && mouse_x <= 831 && 
+		mouse_y > 492 && mouse_y <= 603){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=3 && ps.playerMundo >= 3){
+				fase33(buffer);
+				rest(100);}
+				else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 04
+		if(mouse_x > 992 && mouse_x <= 1222 && 
+		mouse_y > 17 && mouse_y <= 244){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=0 && ps.playerMundo >= 4){
+				fase04(buffer);
+				rest(100);}
+				else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 14
+		if(mouse_x > 1032 && mouse_x <= 1149 && 
+		mouse_y > 257 && mouse_y <= 370){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=1 && ps.playerMundo >= 4){
+				fase14(buffer);
+				rest(100);}
+				else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 24
+		if(mouse_x > 1032 && mouse_x <= 1149 && 
+		mouse_y > 375 && mouse_y <= 486){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=2 && ps.playerMundo >= 4){
+				fase24(buffer);
+				rest(100);}
+				else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 34
+		if(mouse_x > 1032 && mouse_x <= 1149 && 
+		mouse_y > 492 && mouse_y <= 603){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=3 && ps.playerMundo >= 4){
+				 fase34(buffer);
+				 rest(100);}
+				 else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		//MUNDO 44
+		if(mouse_x > 1032 && mouse_x <= 1149 && 
+		mouse_y > 610 && mouse_y <= 721){
+			if (mouse_b == 1){
+				rest(100);
+				if(ps.playerFase>=4 && ps.playerMundo >= 4){
+				fase44(buffer);
+				rest(100);}
+				else{allegro_message("Você ainda não chegou nessa fase!");}
+			}
+		}
+
+		
+		
+		mouse(buffer);//importando a fun��o mouse em baixo de tela para ele sobrepor a tela do menu principal
+		
+
+		draw_sprite(screen, buffer, 0,0);//desenhando o buffer na screen
+		
+		while(timer == delay){}
+		clear(buffer);
+		
+	}
+
+	destroy_bitmap(fundo);
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int contadorCoracao(BITMAP *buffer){
@@ -592,8 +828,7 @@ int telaFinal(BITMAP *buffer){
 		delay = timer;
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
 		
-		gifCaveira(buffer);
-	
+		gifTelafinal(buffer);
 
 		mouse(buffer);//importando a fun��o mouse em baixo de tela para ele sobrepor a tela do menu principal
 		

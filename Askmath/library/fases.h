@@ -43,7 +43,9 @@ int jogoFase[5][5] = { 00, 01, 02, 03, 04,    //   11, 21, 31, 41, 51,
  // fase = l \\ mundo = c
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  int fase00(BITMAP *buffer){
-
+     ps.playerCoracao = 3;//! IGUALANDO CORAÇÕES PARA SEU MÁXIMO POIS É UMA PRIMEIRA FASE DE UM NOVO MUNDO
+     saveState();
+     loadState();
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
     loadState();
@@ -62,6 +64,8 @@ int jogoFase[5][5] = { 00, 01, 02, 03, 04,    //   11, 21, 31, 41, 51,
 
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
 
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
@@ -139,7 +143,9 @@ int jogoFase[5][5] = { 00, 01, 02, 03, 04,    //   11, 21, 31, 41, 51,
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int fase01(BITMAP *buffer){
-
+    ps.playerCoracao = 3;//! IGUALANDO CORAÇÕES PARA SEU MÁXIMO POIS É UMA PRIMEIRA FASE DE UM NOVO MUNDO
+     saveState();
+     loadState();
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
     loadState();
@@ -157,6 +163,8 @@ int fase01(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -233,7 +241,7 @@ int fase01(BITMAP *buffer){
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int fase11(BITMAP *buffer){
-
+    
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
     loadState();
@@ -251,6 +259,8 @@ int fase11(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -294,8 +304,7 @@ int fase11(BITMAP *buffer){
 		draw_sprite(buffer, hover, 185, 573);
             //click
             if (mouse_b == 1){ //!COLOCAR AUMENTO DE PS.PLAYERMUNDO E PS.PLAYERFASE
-            if(ps.playerFase == 1 && ps.playerMundo == 1 ) ps.playerMundo += 1; ps.playerFase = 0;
-            saveState();
+           if(ps.playerFase == 1 && ps.playerMundo == 1 ) ps.playerMundo += 1; ps.playerFase = 0;
             telaAcerto(buffer);
             }
 		}
@@ -327,7 +336,9 @@ int fase11(BITMAP *buffer){
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int fase02(BITMAP *buffer){
-
+    ps.playerCoracao = 3;//! IGUALANDO CORAÇÕES PARA SEU MÁXIMO POIS É UMA PRIMEIRA FASE DE UM NOVO MUNDO
+     saveState();
+     loadState();
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
     loadState();
@@ -399,7 +410,7 @@ int fase02(BITMAP *buffer){
 		draw_sprite(buffer, hover, 730, 585);
             //click
             if (mouse_b == 1){ //!COLOCAR AUMENTO DE PS.PLAYERMUNDO E PS.PLAYERFASE
-            if(ps.playerFase == 0 && ps.playerMundo == 2 ) ps.playerFase+= 1;
+         if (ps.playerFase == 0 && ps.playerMundo == 2 ) ps.playerFase+= 1;
             saveState();
             telaAcerto(buffer);
             
@@ -437,6 +448,8 @@ int fase12(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -532,6 +545,8 @@ int fase22(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -590,7 +605,7 @@ int fase22(BITMAP *buffer){
 		draw_sprite(buffer, hover, 730, 585);
             //click
             if (mouse_b == 1){ //!COLOCAR AUMENTO DE PS.PLAYERMUNDO E PS.PLAYERFASE
-            if(ps.playerFase == 2 && ps.playerMundo == 2 ) ps.playerFase = 0; ps.playerMundo = 3;
+            if(ps.playerFase == 2 && ps.playerMundo == 2 ) ps.playerMundo = 3; ps.playerFase =0;
             saveState();
             telaAcerto(buffer);
 		}}
@@ -609,7 +624,9 @@ int fase22(BITMAP *buffer){
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int fase03(BITMAP *buffer){
-
+    ps.playerCoracao = 3;//! IGUALANDO CORAÇÕES PARA SEU MÁXIMO POIS É UMA PRIMEIRA FASE DE UM NOVO MUNDO
+     saveState();
+     loadState();
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
     loadState();
@@ -627,6 +644,8 @@ int fase03(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -721,6 +740,8 @@ int fase13(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -816,6 +837,8 @@ int fase23(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -911,6 +934,8 @@ int fase33(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -954,7 +979,7 @@ int fase33(BITMAP *buffer){
 		draw_sprite(buffer, hover, 185, 573);
             //click
             if (mouse_b == 1){ //!COLOCAR AUMENTO DE PS.PLAYERMUNDO E PS.PLAYERFASE
-            if(ps.playerFase == 3 && ps.playerMundo == 3 ) ps.playerFase = 0; ps.playerMundo = 4;
+            if(ps.playerFase == 3 && ps.playerMundo == 3 ) ps.playerMundo = 4; ps.playerFase = 0;
             saveState();
             telaAcerto(buffer);
 		    }
@@ -988,7 +1013,9 @@ int fase33(BITMAP *buffer){
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int fase04(BITMAP *buffer){
-
+    ps.playerCoracao = 3;//! IGUALANDO CORAÇÕES PARA SEU MÁXIMO POIS É UMA PRIMEIRA FASE DE UM NOVO MUNDO
+     saveState();
+     loadState();
     int x = 0, y = 0, i;
     r=0, g=255, b=0;
     loadState();
@@ -1006,6 +1033,8 @@ int fase04(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -1063,7 +1092,7 @@ int fase04(BITMAP *buffer){
 		draw_sprite(buffer, hover, 730, 585);
             //click
             if (mouse_b == 1){ //!COLOCAR AUMENTO DE PS.PLAYERMUNDO E PS.PLAYERFASE
-            if(ps.playerFase == 0 && ps.playerMundo == 4 ) ps.playerFase += 1;
+        if (ps.playerFase == 0 && ps.playerMundo == 4 ) ps.playerFase += 1;
             saveState();
             telaAcerto(buffer);
 		    }
@@ -1101,6 +1130,8 @@ int fase14(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -1196,6 +1227,8 @@ int fase24(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -1291,6 +1324,8 @@ int fase34(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -1387,6 +1422,8 @@ int fase44(BITMAP *buffer){
 		delay = timer;
             if (ps.playerCoracao <= 0){
                 ps.playerCoracao = 0;
+                ps.playerFase = 0;
+                saveState();
             }
         if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
 
@@ -1466,69 +1503,79 @@ int fase44(BITMAP *buffer){
 BITMAP* buffer = create_bitmap(1280,720); //declarando buffer dentro do escopo do escolhaFase
 switch (jogoFase[l][c]){
 
-    case 0:
-        ps.playerCoracao = 3; //! IGUALANDO CORAÇÕES PARA SEU MÁXIMO POIS É UMA PRIMEIRA FASE DE UM NOVO MUNDO
+    case 0: 
         fase00(buffer);
+        rest(25);
         break;
     
      case 1:
-        ps.playerCoracao = 3;
         fase01(buffer);
+        rest(25);
         break;
 
     case 11:
         fase11(buffer);
+        rest(25);
         break;
 
     case 2:
-        ps.playerCoracao = 3;
         fase02(buffer);
+        rest(25);
         break;
 
     case 12:
         fase12(buffer);
+        rest(25);
         break;
 
     case 22:
         fase22(buffer);
+        rest(25);
         break;
 
     case 3:
-        ps.playerCoracao = 3;
         fase03(buffer);
+        rest(25);
         break;
     
     case 13:
         fase13(buffer);
+        rest(25);
         break;
 
     case 23:
         fase23(buffer);
+        rest(25);
         break;
 
     case 33:
         fase33(buffer);
+        rest(25);
         break;
 
     case 4:
-        ps.playerCoracao = 3;
         fase04(buffer);
+        rest(25);
         break;
 
     case 14:
         fase14(buffer);
+        rest(25);
         break;
         
     case 24:
         fase24(buffer);
+        rest(25);
         break;
 
     case 34:
         fase34(buffer);
+        rest(25);
         break;
 
     case 44:
         fase44(buffer);
+        rest(25);
         break; 
 
 }
@@ -1581,7 +1628,7 @@ int timerResposta(BITMAP *buffer, int segs){
         if(r!=255) r += 5;
         if(r==255 && g!= 0)  g -= 6;}
 
-        if(limiteRect == 1042){gifGameOver(buffer);}
+        if(limiteRect == 1042){ps.playerFase = 0; gifGameOver(buffer);}
 
 		rectfill(buffer,630, 75, limiteRect ,50, makecol(r,g,b));//desenhando um retangulo preenchido atras
 
