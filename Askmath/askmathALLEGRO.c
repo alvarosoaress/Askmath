@@ -7,6 +7,7 @@
 #include "library\playerFunc.h"
 #include "library\fases.h"
 #include <winalleg.h> //SALVA VIDAS <3
+
 //INT MAIN
 int main (){
 	allegro_init();
@@ -25,7 +26,7 @@ int main (){
 	//VARIAVEIS
 
 	//MUSICAS
-	
+
 	//DETERMINANDO NOME DA VARIAVEL PARA TOCAR A MUSICA E O LOCAL DELA
 	SAMPLE *wave = load_sample("assets/musicas/fundomusica.wav");
 	
@@ -36,7 +37,7 @@ int main (){
 	BITMAP* buffer = create_bitmap(1280,720);
 
 	telaInicial(buffer);
-		
+	
 	destroy_sample(wave);
 	return 0;
 }

@@ -6,19 +6,18 @@
 #include "playerStatus.h"
 #include "playerFunc.h"
 
-
 #ifndef _funcsH_
 #define _funcsH_
 
 //VAR GLOBAIS
 int timer = 0;//controlador frame time
-int timersegundos = 0;//controlador "relogio de segundos"
+
 int timerms = 0;
 int entratextoRODAR = 0;
 
-void tempoms() {timerms++;}
+void tempoms() {timerms++;} //controla o tempo_de_troca do GIF
 void tempo () {timer++;}//controlador frame time
-void segundos () {timersegundos++;}//controlador "relogio de segundos"
+
 float delay;
 FONT *firasans_16;
 FONT *chalk;
@@ -31,16 +30,16 @@ int telaInicial(BITMAP *buffer){
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERTELAINICIAL.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
 	
-		while(!key[KEY_ESC])
+		while(!key[KEY_F10])
 	{
 		clear(buffer);
 		delay = timer;
-		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
-		gifteste(buffer);
-		textprintf_ex(buffer,font,100,100,makecol(123,23,222), -1, "%d", timerms);//contador de segundos passados
 
-		textprintf_ex(buffer,font,850,200,makecol(255,0,0), -1, "%s", ps.playerNome);
-		//BOT�O JOGAR
+		if(key[KEY_ESC]) {allegro_exit();}
+
+		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
+
+		//BOTÃO JOGAR
 		if(mouse_x > 436 && mouse_x <= 859 && //quando o mouser der hover aqui
 		mouse_y > 385 && mouse_y <= 492){//aparece um tra�ado preto aqui
 			
@@ -50,17 +49,24 @@ int telaInicial(BITMAP *buffer){
 			}
 		}
 		
-		//BOT�O CR�DITOS
-		if(mouse_x > 11 && mouse_x <= 432 && 
-		mouse_y > 597 && mouse_y <= 701){
-			
-		draw_sprite(buffer, hover, 0, 595);}
-		
-		//BOT�O SAIR
+		//BOTÃO CRÉDITOS
 		if(mouse_x > 855 && mouse_x <=1280 && 
 		mouse_y > 597 && mouse_y <= 701){
+		draw_sprite(buffer, hover, 835, 595);
+		rest(50);
+		if(mouse_b == 1){
+			telaCredtios(buffer);
+			}
+		}
+
+		//BOTÃO SAIR
+		if(mouse_x > 11 && mouse_x <= 432 && 
+		mouse_y > 597 && mouse_y <= 701){
+			rest(25);
+			if (mouse_b == 1){
+				allegro_exit();}
+		draw_sprite(buffer, hover, 0, 595);}
 			
-		draw_sprite(buffer, hover, 835, 595);}
 	
 
 		mouse(buffer);//importando a fun��o mouse em baixo de tela para ele sobrepor a tela do menu principal
@@ -69,9 +75,6 @@ int telaInicial(BITMAP *buffer){
 		
 		while(timer == delay){}
 		clear(buffer);
-		if (key[KEY_W]){
-			return (1);
-		}
 		
 }
 	destroy_bitmap(fundo);
@@ -82,8 +85,6 @@ int telaInicial(BITMAP *buffer){
 int mouse (BITMAP *buffer){
 	BITMAP* ponteiro = load_bitmap("assets/cursor/cursorpica.bmp", NULL);//importando o ponteiro para VAR ponteiro
 		
-		textprintf_ex(buffer, font, 200, 200, makecol(200,200,200), -1, "mx %i my %i", mouse_x, mouse_y);
-		textprintf_ex(buffer, font, 400, 400, makecol(400,400,400), -1, "mouse click %i", mouse_b);
 		set_mouse_sprite(ponteiro);
 		draw_sprite(buffer, ponteiro, mouse_x-1, mouse_y);//desenhando o mouse no buffer
 		freeze_mouse_flag;
@@ -94,16 +95,20 @@ int telaSelecaoPers(BITMAP *buffer){
 	int x = 0, y = 0, i;
 
 	BITMAP* telaSelecao = load_bitmap("assets/telas/askmathESCOLHAPERS.bmp", NULL);
+	BITMAP* excluir = load_bitmap("assets/telas/botaoExcluir.bmp", NULL);
 	BITMAP* hover1 = load_bitmap("assets/telas/askmathESCOLHAPERSHOVERvermelho.bmp", NULL);
 	BITMAP* hover2 = load_bitmap("assets/telas/askmathESCOLHAPERSHOVERamarelo.bmp", NULL);
 	BITMAP* hover3 = load_bitmap("assets/telas/askmathESCOLHAPERSHOVERazul.bmp", NULL);
+	BITMAP* hoverexcluir = load_bitmap("assets/telas/askmathHOVEREXCLUIR.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
 	
-		while(!key[KEY_ESC])
+		while(!key[KEY_F10])
 	{
 		clear(buffer);
 		delay = timer;
-		
+
+		if(key[KEY_ESC]) {telaInicial(buffer);}
+
 		draw_sprite(buffer, telaSelecao, 0, 0);//desenhando tela menu principal no buffer
 		
 		//BOT�O PERSONAGEM 1
@@ -159,15 +164,49 @@ int telaSelecaoPers(BITMAP *buffer){
 					}
 				}
 			}
+
+		draw_sprite(buffer, excluir, 60, 650);
+		draw_sprite(buffer, excluir, 503, 650);
+		draw_sprite(buffer, excluir, 921, 650);
+
+		// EXCLUIR 1
+		if(mouse_x > 60 && mouse_x <= 335 && //quando o mouser der hover aqui
+		mouse_y > 645 && mouse_y <= 710){//aparece um tra�ado preto aqui
+		draw_sprite(buffer, hoverexcluir, 60, 650);
+			if(mouse_b == 1){
+			ps.playerNumero = '1';
+			loadState();
+			ps.playerIdade = 0; ps.playerMundo = 0; ps.playerFase = 0; ps.playerCoracao = 3; ps.playerNome == 0;
+			saveState();}
+		}
 		
-		
-		textprintf_ex(buffer,font,100,100,makecol(123,23,222), -1, "%d", timersegundos);//contador de segundos passados
-		
+		// EXCLUIR 1
+		if(mouse_x > 503 && mouse_x <= 778 && //quando o mouser der hover aqui
+		mouse_y > 645 && mouse_y <= 710){//aparece um tra�ado preto aqui
+		draw_sprite(buffer, hoverexcluir, 503, 650);
+		if(mouse_b == 1){
+			ps.playerNumero = '2';
+			loadState();
+			ps.playerIdade = 0; ps.playerMundo = 0; ps.playerFase = 0; ps.playerCoracao = 3; ps.playerNome == 0;
+			saveState();}
+			}
+
+		// EXCLUIR 1
+		if(mouse_x > 921 && mouse_x <= 1196 && //quando o mouser der hover aqui
+		mouse_y > 645 && mouse_y <= 710){//aparece um tra�ado preto aqui
+		draw_sprite(buffer, hoverexcluir, 921, 650);
+		if(mouse_b == 1){
+			ps.playerNumero = '3';
+			loadState();
+			ps.playerIdade = 0; ps.playerMundo = 0; ps.playerFase = 0; ps.playerCoracao = 3; ps.playerNome == 0;
+			saveState();}
+			}
+
+
 		mouse(buffer);//importando a fun��o mouse em baixo de tela para ele sobrepor a tela do menu principal
 
 		selecaoPers(buffer);
-
-
+		
 		draw_sprite(screen, buffer, 0,0);//desenhando o buffer na screen
 		
 		while(timer == delay){}
@@ -191,7 +230,10 @@ int x = 390, y = 220, i=0;
 	BITMAP* hoverNome = load_bitmap("assets/telas/hoverNome.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
 	chalk = load_font("library/chalk94.pcx", NULL, NULL);
-	
+
+		for(i=0;i<10;i++){
+			ps.playerNome[i] = ' ';}
+
 		while(!key[KEY_ESC])
 	{
 		clear(buffer);
@@ -242,19 +284,19 @@ int x = 390, y = 220, i=0;
 		}
 		
 		if(ps.playerIdade <= 0 || ps.playerIdade >= 99){ //tratando a variavel para que ela não ultrapasse 99 nem fique negativa, caso um dos dois seja verdade a variavel irá ser igualada à 0
-			ps.playerIdade = 0;
+			ps.playerIdade = 1;
 		}
 
 		mouse(buffer);//importando a função mouse em baixo de tela para ele sobrepor a tela do menu principal
 
 		//MOSTRADOR DE IDADE   //!AUEMENTAR O TAMNHO DA FONTE 
-		textprintf_ex(buffer,chalk,510,410,makecol(123,23,222), -1, "%d", ps.playerIdade);
+		textprintf_ex(buffer,chalk,510,410,makecol(255,255,255), -1, "%d", ps.playerIdade);
 
 		for(i=0;i<10;i++){
 			if(ps.playerNome[i] != NULL ){//imprimindo o nome na tela letra por letra para encaixar no lugar certo
 			
 				
-				textprintf_ex(buffer,chalk,x,y,makecol(123,23,222), -1, "%c", ps.playerNome[i]);
+				textprintf_ex(buffer,chalk,x,y,makecol(255,255,255), -1, "%c", ps.playerNome[i]);
 				x+=88;//dando um espaço de 88px entre um caracter e outro
 				}
 		}
@@ -262,11 +304,11 @@ int x = 390, y = 220, i=0;
 		x = 390;//igualando o x a 390 novamente para a impressão do nome ficar certa
 
 		draw_sprite(screen, buffer, 0,0);//desenhando o buffer na screen
-
 		
 		while(timer == delay){}
 		clear(buffer);
 		}
+
 	destroy_bitmap(fundo);
 	destroy_bitmap(hover);
 	destroy_bitmap(hoverIdade);
@@ -275,30 +317,120 @@ int x = 390, y = 220, i=0;
 	destroy_font(chalk);
 	}
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-int gifteste (BITMAP *buffer){
+int gifAcerto (BITMAP *buffer){
 	int i=0;
-	int num_frames = 4;
+	int num_frames = 10;
 	int frame_atual = 0;
-	int tempo_de_troca = 200;
+	int tempo_de_troca = 100;
+	BITMAP* fv[10];
 
-	BITMAP* f0 = load_bitmap("gif/0.bmp", NULL);
-	BITMAP* f1 = load_bitmap("gif/1.bmp", NULL);
-	BITMAP* f2 = load_bitmap("gif/2.bmp", NULL);
-	BITMAP* f3 = load_bitmap("gif/3.bmp", NULL);
+	 fv[0] = load_bitmap("assets/gifs/gifAcerto/0.bmp", NULL);
+	 fv[1] = load_bitmap("assets/gifs/gifAcerto/1.bmp", NULL);
+	 fv[2] = load_bitmap("assets/gifs/gifAcerto/2.bmp", NULL);
+	 fv[3] = load_bitmap("assets/gifs/gifAcerto/3.bmp", NULL);
+	 fv[4] = load_bitmap("assets/gifs/gifAcerto/4.bmp", NULL);
+	 fv[5] = load_bitmap("assets/gifs/gifAcerto/5.bmp", NULL);
+	 fv[6] = load_bitmap("assets/gifs/gifAcerto/6.bmp", NULL);
+	 fv[7] = load_bitmap("assets/gifs/gifAcerto/7.bmp", NULL);
+	 fv[8] = load_bitmap("assets/gifs/gifAcerto/8.bmp", NULL);
+	 fv[9] = load_bitmap("assets/gifs/gifAcerto/9.bmp", NULL);
 
-	int fv[4] = {f0,f1,f2,f3};
+		rest(50);
+		frame_atual = (timerms / tempo_de_troca) % num_frames;
 
-	frame_atual = (timerms / tempo_de_troca) % num_frames;
+		draw_sprite(buffer, fv[frame_atual], 470, 350);
 
-	draw_sprite(buffer, fv[frame_atual], 0, 0);
-	/* printf("Frame atual: %d\n", frame_atual);
-	printf("timerms/tempodetroca: %d\n", (timerms / tempo_de_troca)); */
+		if(mouse_b == 1){escolhaFase(ps.playerFase, ps.playerMundo);}
 
-	destroy_bitmap(f0);
-	destroy_bitmap(f1);
-	destroy_bitmap(f2);
-	destroy_bitmap(f3);
+
+	destroy_bitmap (fv[0]);
+	destroy_bitmap (fv[1]);
+	destroy_bitmap (fv[2]);
+	destroy_bitmap (fv[3]);
+	destroy_bitmap (fv[4]);
+	destroy_bitmap (fv[5]);
+	destroy_bitmap (fv[6]);
+	destroy_bitmap (fv[7]);
+	destroy_bitmap (fv[8]);
+	destroy_bitmap (fv[9]);
 }
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+int gifCaveira (BITMAP *buffer){
+	int i=0;
+	int num_frames = 9;
+	int frame_atual = 0;
+	int tempo_de_troca = 100;
+	BITMAP* fv[9];
+
+	 fv[0] = load_bitmap("assets/gifs/gifCaveira/gif_caveira1.bmp", NULL);
+	 fv[1] = load_bitmap("assets/gifs/gifCaveira/gif_caveira2.bmp", NULL);
+	 fv[2] = load_bitmap("assets/gifs/gifCaveira/gif_caveira3.bmp", NULL);
+	 fv[3] = load_bitmap("assets/gifs/gifCaveira/gif_caveira4.bmp", NULL);
+	 fv[4] = load_bitmap("assets/gifs/gifCaveira/gif_caveira5.bmp", NULL);
+	 fv[5] = load_bitmap("assets/gifs/gifCaveira/gif_caveira6.bmp", NULL);
+	 fv[6] = load_bitmap("assets/gifs/gifCaveira/gif_caveira7.bmp", NULL);
+	 fv[7] = load_bitmap("assets/gifs/gifCaveira/gif_caveira8.bmp", NULL);
+	 fv[8] = load_bitmap("assets/gifs/gifCaveira/gif_caveira9.bmp", NULL);
+
+		rest(50);
+		frame_atual = (timerms / tempo_de_troca) % num_frames;
+
+		draw_sprite(buffer, fv[frame_atual], 400, 200);
+
+
+	destroy_bitmap (fv[0]);
+	destroy_bitmap (fv[1]);
+	destroy_bitmap (fv[2]);
+	destroy_bitmap (fv[3]);
+	destroy_bitmap (fv[4]);
+	destroy_bitmap (fv[5]);
+	destroy_bitmap (fv[6]);
+	destroy_bitmap (fv[7]);
+	destroy_bitmap (fv[8]);
+}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ int gifGameOver (BITMAP *buffer){
+	int i=0;
+	int num_frames = 31;
+	int frame_atual = 0;
+	int tempo_de_troca = 250;
+	int varLock = 0;
+
+	BITMAP* fv[31];
+
+	char *path;
+
+    for(int i = 0; i < 31; i++){
+        asprintf(&path, "assets/gifs/gifGameover/gameoverASKMATH%d.bmp", i);
+        fv[i] = load_bitmap(path, NULL);
+    }
+		delay = timer;
+
+		timerms = 0;
+
+		while(!key[KEY_F10]){
+			
+		clear(buffer);
+		if(key[KEY_ESC]) {telaMenuPrincipal(buffer);}
+		if (varLock != 1){
+			frame_atual = (timerms / tempo_de_troca) % num_frames;
+			draw_sprite(buffer, fv[frame_atual], 0, 0);
+			draw_sprite(screen, buffer, 0,0);
+			}
+
+			if (frame_atual==30){
+				varLock = 1;
+				if(mouse_b==1){telaMenuPrincipal(buffer);}
+			}
+		
+		while(timer == delay){}
+		clear(buffer);
+		}
+
+	for(int i = 0; i < 31; i++){
+	destroy_bitmap (fv[i]);}
+
+} 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int entratexto (int x, int y){
 	int i=0;
@@ -319,12 +451,12 @@ int entratexto (int x, int y){
 			x+=88;
 			entratextoRODAR = 1;//igualando a varivavel de controle para 1, travando toda a função, impedidndo dela rodar novamente até que a varivavel seja 0 novamente;
 		}
-		textprintf_ex(screen,chalk,x,y,makecol(123,23,222), -1, "%c", var);
+		textprintf_ex(screen,chalk,x,y,makecol(255,255,255), -1, "%c", var);
 
 		//imprimindo letra por letra na tela do usuario
 	}
 
-}
+	}
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int entraNome (BITMAP *buffer){
@@ -332,9 +464,7 @@ int x = 390, y = 220, i=0;
 
 	BITMAP* fundo = load_bitmap("assets/telas/askmathCRIACAONOME.bmp", NULL);
 
-	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
-	
-		while(!key[KEY_ESC])
+		while(!key[KEY_F10])
 	{
 		clear(buffer);
 		delay = timer;
@@ -352,9 +482,8 @@ int x = 390, y = 220, i=0;
 		while(timer == delay){}
 		clear(buffer);
 		return 1;
-}
+	}
 	destroy_bitmap(fundo);
-	destroy_font(firasans_16);
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int telaMenuPrincipal(BITMAP *buffer){
@@ -365,12 +494,14 @@ int x = 0, y = 0, i;
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERMENUPRINCIPAL.bmp", NULL);
 	firasans_16 = load_font("library/firasans16.pcx", NULL, NULL);
 	
-		while(!key[KEY_ESC])
+		while(!key[KEY_F10])
 	{
 		clear(buffer);
 		delay = timer;
+
+		if(key[KEY_ESC]) {telaInicial(buffer);}
+
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
-		gifteste(buffer);
 		
 		//BOTÃO CONTINUAR
 		if(mouse_x > 52 && mouse_x <= 600 && //quando o mouser der hover aqui
@@ -385,6 +516,9 @@ int x = 0, y = 0, i;
 		if(mouse_x > 52 && mouse_x <= 600 && //quando o mouser der hover aqui
 		mouse_y > 218 && mouse_y <= 340){//aparece um tra�ado preto aqui
 		draw_sprite(buffer, hover, 43, 217);
+		if (mouse_b == 1){
+				 telaSelecaoPers(buffer);
+			}
 		}
 
 		//BOTÃO MUNDOS
@@ -397,6 +531,9 @@ int x = 0, y = 0, i;
 		if(mouse_x > 52 && mouse_x <= 600 && //quando o mouser der hover aqui
 		mouse_y > 560 && mouse_y <= 696){//aparece um tra�ado preto aqui
 		draw_sprite(buffer, hover, 42, 558);
+			if (mouse_b == 1){
+				 allegro_exit();
+			}
 		}
 		
 		mouse(buffer);//importando a fun��o mouse em baixo de tela para ele sobrepor a tela do menu principal
@@ -415,6 +552,124 @@ int x = 0, y = 0, i;
 
 }
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+int contadorCoracao(BITMAP *buffer){
+
+int x = 219, y = 10, i;
+
+	BITMAP* tresCoracao = load_bitmap("assets/telas/3coracoes.bmp", NULL);
+	BITMAP* doisCoracao = load_bitmap("assets/telas/2coracoes.bmp", NULL);
+	BITMAP* umCoracao = load_bitmap("assets/telas/1coracoes.bmp", NULL);
+	
+	BITMAP* coracaoQuebrado = load_bitmap("assets/telas/0coracoes.bmp", NULL);
+
+	switch(ps.playerCoracao){
+		case 0:
+			gifGameOver(buffer);//desenhando tela menu principal no buffer
+			break;
+
+		case 1:
+			draw_sprite(buffer, umCoracao, x, y);//desenhando tela menu principal no buffer
+			break;
+
+		case 2:
+			draw_sprite(buffer, doisCoracao, x, y);//desenhando tela menu principal no buffer
+			break;
+
+		case 3:
+			draw_sprite(buffer, tresCoracao, x, y);//desenhando tela menu principal no buffer
+			break;
+	}
+}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+int telaFinal(BITMAP *buffer){
+	int x = 0, y = 0, i=0;
+
+	BITMAP* fundo = load_bitmap("assets/telas/askmathTELAFINAL.bmp", NULL);
+	
+		while(!key[KEY_ESC])
+	{
+		clear(buffer);
+		delay = timer;
+		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
+		
+		gifCaveira(buffer);
+	
+
+		mouse(buffer);//importando a fun��o mouse em baixo de tela para ele sobrepor a tela do menu principal
+		
+		draw_sprite(screen, buffer, 0,0);//desenhando o buffer na screen
+		
+		while(timer == delay){}
+		clear(buffer);
+		
+}
+	destroy_bitmap(fundo);
+}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+int telaCredtios (BITMAP* buffer){
+int x = 0, y = 0, i=0;
+
+	BITMAP* fundo = load_bitmap("assets/telas/askmathTELACREDITOS.bmp", NULL);
+	
+		while(!key[KEY_F10])
+	{
+		if(key[KEY_ESC]) {telaInicial(buffer);}
+
+		clear(buffer);
+		delay = timer;
+		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
+		
+		if(mouse_x > 20 && mouse_x <= 455 && 
+		mouse_y > 646 && mouse_y <= 715){
+			if (mouse_b == 1){telaInicial(buffer);}
+			rest(25);
+			}
+
+		if(mouse_x > 586 && mouse_x <= 1267 && 
+		mouse_y > 646 && mouse_y <= 715){
+			if (mouse_b == 1){telaAgradecimentos(buffer);}
+			rest(25);
+			}
+
+		mouse(buffer);//importando a fun��o mouse em baixo de tela para ele sobrepor a tela do menu principal
+		
+		draw_sprite(screen, buffer, 0,0);//desenhando o buffer na screen
+		
+		while(timer == delay){}
+		clear(buffer);
+		
+}
+	destroy_bitmap(fundo);
+}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+int telaAgradecimentos (BITMAP* buffer){
+int x = 0, y = 0, i=0;
+
+	BITMAP* fundo = load_bitmap("assets/telas/askmathTELACREDITOS2.bmp", NULL);
+	
+		while(!key[KEY_F10])
+	{
+		if(key[KEY_ESC]) {telaInicial(buffer);}
+
+		clear(buffer);
+		delay = timer;
+		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
+		
+		if(mouse_x > 20 && mouse_x <= 455 && 
+		mouse_y > 646 && mouse_y <= 715){
+			if (mouse_b == 1){telaInicial(buffer);}
+			rest(50);
+			}
+
+		mouse(buffer);//importando a fun��o mouse em baixo de tela para ele sobrepor a tela do menu principal
+		
+		draw_sprite(screen, buffer, 0,0);//desenhando o buffer na screen
+		
+		while(timer == delay){}
+		clear(buffer);
+		
+}
+	destroy_bitmap(fundo);
+}
 
 #endif
-

@@ -1,6 +1,5 @@
-playerNome=calvaro
-playerXp=0
-playerNivel=0
-playerIdade=7
+playerNome=0
+playerCoracao=3
+playerIdade=0
 playerMundo=0
 playerFase=0

@@ -1,6 +1,5 @@
-playerNome=0
-playerXp=0
-playerNivel=0
+playerNome=alvaro
+playerCoracao=3
 playerIdade=0
 playerMundo=0
 playerFase=0

@@ -7,9 +7,13 @@
 #ifndef _playerStatusH_
 #define _playerStatusH_
 
+//VAR GLOBAIS
+int coracao = 3;
+
+
 struct playerStatus{
 	char playerNome [20];
-	int playerNumero, playerXp, playerNivel, playerIdade, playerFase, playerMundo;
+	int playerNumero, playerCoracao, playerIdade, playerFase, playerMundo;
 };
 
 struct playerStatus ps;

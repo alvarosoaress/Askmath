@@ -1,0 +1,19 @@
+matriz 14x14
+
+jogado na setinha
+quando seta pra direita c++
+esquerda c--
+cima l++
+baixo l--
+
+hover para cada indice
+draw sprite do hover no indice baseado da setinha
+
+(escolha do jogador se ele quer atirar ou colocar navio)
+enter atira em L e C
+
+IF para verificar se em X índice da matriz existe algo 
+percorrer a matriz usando for e verificando indice por indice 
+
+se existir algo naquele indice = draw sprtie tiro 
+se não prossegue o jogo

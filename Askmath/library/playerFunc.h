@@ -28,7 +28,7 @@ void saveState(){//sub-rotina para salvar os status atuais do jogador
 			output = fopen("assets/Players/playerUm.txt", "w");
 			//abrindo o txt playerUm no modo "write"
 
-			fprintf(output, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d\n",ps.playerNome,ps.playerXp, ps.playerNivel, ps.playerIdade,ps.playerMundo,ps.playerFase);//escrevendo os dados dentro do txt
+			fprintf(output, "playerNome=%s\nplayerCoracao=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d",ps.playerNome,ps.playerCoracao, ps.playerIdade,ps.playerMundo,ps.playerFase);//escrevendo os dados dentro do txt
 
 			fclose(output);
 			break;
@@ -37,7 +37,7 @@ void saveState(){//sub-rotina para salvar os status atuais do jogador
 			output = fopen("assets/Players/playerDois.txt", "w");
 			//abrindo o txt playerDois no modo "write"
 
-			fprintf(output, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d\n",ps.playerNome,ps.playerXp, ps.playerNivel, ps.playerIdade,ps.playerMundo,ps.playerFase);//escrevendo os dados dentro do txt
+			fprintf(output, "playerNome=%s\nplayerCoracao=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d",ps.playerNome,ps.playerCoracao, ps.playerIdade,ps.playerMundo,ps.playerFase);//escrevendo os dados dentro do txt
 			
 			fclose(output);
 			break;
@@ -46,7 +46,7 @@ void saveState(){//sub-rotina para salvar os status atuais do jogador
 			output = fopen("assets/Players/playerTres.txt", "w");
 			//abrindo o txt playerTres no modo "write"
 
-			fprintf(output, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d\n",ps.playerNome,ps.playerXp, ps.playerNivel, ps.playerIdade,ps.playerMundo,ps.playerFase);//escrevendo os dados dentro do txt
+			fprintf(output, "playerNome=%s\nplayerCoracao=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d",ps.playerNome,ps.playerCoracao, ps.playerIdade,ps.playerMundo,ps.playerFase);//escrevendo os dados dentro do txt
 			
 			fclose(output);
 			break;
@@ -75,7 +75,7 @@ void loadState(){//sub-rotina para carregar os status atuais do jogador
 				   } else {
 				       perror("getcwd() error");
 				   }
-				fscanf(input, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d\n",&ps.playerNome,&ps.playerXp, &ps.playerNivel, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
+				fscanf(input, "playerNome=%s\nplayerCoracao=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d",&ps.playerNome,&ps.playerCoracao, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
 				//lendo os dados dentro do txt e atribuindo seus valores para dentro da struct playerStatus
 				
 				if (ps.playerIdade > 0){
@@ -88,7 +88,7 @@ void loadState(){//sub-rotina para carregar os status atuais do jogador
 				input = fopen("assets/Players/playerDois.txt", "r");
 				//abrindo o txt playerDois no modo "read"
 
-				fscanf(input, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d\n",&ps.playerNome,&ps.playerXp, &ps.playerNivel, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
+				fscanf(input, "playerNome=%s\nplayerCoracao=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d",&ps.playerNome,&ps.playerCoracao, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
 				//lendo os dados dentro do txt e atribuindo seus valores para dentro da struct playerStatus
 				
 				if (ps.playerIdade > 0){
@@ -101,7 +101,7 @@ void loadState(){//sub-rotina para carregar os status atuais do jogador
 				input = fopen("assets/Players/playerTres.txt", "r");
 				//abrindo o txt playerTres no modo "read"
 
-				fscanf(input, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d\n",&ps.playerNome,&ps.playerXp, &ps.playerNivel, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
+				fscanf(input, "playerNome=%s\nplayerCoracao=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d",&ps.playerNome,&ps.playerCoracao, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
 				//lendo os dados dentro do txt e atribuindo seus valores para dentro da struct playerStatus
 				
 				if (ps.playerIdade > 0){
@@ -124,17 +124,15 @@ void selecaoPers(BITMAP *buffer) {
 		input = fopen("assets/Players/playerUm.txt", "r");
 		//abrindo o txt playerUm no modo "read"
 
-			fscanf(input, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d\n",&ps.playerNome,&ps.playerXp, &ps.playerNivel, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
+			fscanf(input, "playerNome=%s\nplayerCoracao=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d",&ps.playerNome,&ps.playerCoracao, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
 				//lendo os dados dentro do txt e atribuindo seus valores para dentro da struct playerStatus
 
 			if (ps.playerIdade > 0){//!Verificando se o save game existe a partir da idade que o jogador ofereca, caso ela seja 0, o save nao existe.
 			// PLAYER 1 
 			textprintf_ex(buffer, ubuntu_12, 80,300,makecol(255,0,0), -1,"%4s%s", "Nome: ", ps.playerNome);
-			textprintf_ex(buffer, ubuntu_12, 50,355,makecol(255,0,0), -1,"%4s%i","Xp: ", ps.playerXp);
-			textprintf_ex(buffer, ubuntu_12, 50,410,makecol(255,0,0), -1,"%4s%i","Nivel: ", ps.playerNivel);
-			textprintf_ex(buffer, ubuntu_12, 50,465,makecol(255,0,0), -1,"%4s%i","Idade: ", ps.playerIdade);
-			textprintf_ex(buffer, ubuntu_12, 50,515,makecol(255,0,0), -1,"%4s%i","Mundo: ", ps.playerMundo);
-			textprintf_ex(buffer, ubuntu_12, 50,565,makecol(255,0,0), -1,"%4s%i","Fase: ", ps.playerFase);
+			textprintf_ex(buffer, ubuntu_12, 50,355,makecol(255,0,0), -1,"%4s%i","Idade: ", ps.playerIdade);
+			textprintf_ex(buffer, ubuntu_12, 50,410,makecol(255,0,0), -1,"%4s%i","Mundo: ", ps.playerMundo);
+			textprintf_ex(buffer, ubuntu_12, 50,465,makecol(255,0,0), -1,"%4s%i","Fase: ", ps.playerFase);
 			// PLAYER 1  //!Printando as informações do player Um uma por uma
 			}
 			else {
@@ -147,18 +145,16 @@ void selecaoPers(BITMAP *buffer) {
 		input = fopen("assets/Players/playerDois.txt", "r");
 		//abrindo o txt playerDois no modo "read"
 
-			fscanf(input, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d\n",&ps.playerNome,&ps.playerXp, &ps.playerNivel, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
+			fscanf(input, "playerNome=%s\nplayerCoracao=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d",&ps.playerNome,&ps.playerCoracao, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
 				//lendo os dados dentro do txt e atribuindo seus valores para dentro da struct playerStatus
 
 			if (ps.playerIdade > 0){//!Verificando se o save game existe a partir da idade que o jogador ofereca, caso ela seja 0, o save nao existe.
 
 			// PLAYER 2 
 			textprintf_ex(buffer, ubuntu_12, 500,300,makecol(204,204,0), -1,"%4s%s", "Nome: ", ps.playerNome);
-			textprintf_ex(buffer, ubuntu_12, 470,355,makecol(204,204,0), -1,"%4s%i","Xp: ", ps.playerXp);
-			textprintf_ex(buffer, ubuntu_12, 470,410,makecol(204,204,0), -1,"%4s%i","Nivel: ", ps.playerNivel);
-			textprintf_ex(buffer, ubuntu_12, 470,465,makecol(204,204,0), -1,"%4s%i","Idade: ", ps.playerIdade);
-			textprintf_ex(buffer, ubuntu_12, 470,515,makecol(204,204,0), -1,"%4s%i","Mundo: ", ps.playerMundo);
-			textprintf_ex(buffer, ubuntu_12, 470,565,makecol(204,204,0), -1,"%4s%i","Fase: ", ps.playerFase);
+			textprintf_ex(buffer, ubuntu_12, 470,355,makecol(204,204,0), -1,"%4s%i","Idade: ", ps.playerIdade);
+			textprintf_ex(buffer, ubuntu_12, 470,410,makecol(204,204,0), -1,"%4s%i","Mundo: ", ps.playerMundo);
+			textprintf_ex(buffer, ubuntu_12, 470,465,makecol(204,204,0), -1,"%4s%i","Fase: ", ps.playerFase);
 			// PLAYER 2  //!Printando as informações do player Dois uma por uma
 			}
 			else {
@@ -171,18 +167,16 @@ void selecaoPers(BITMAP *buffer) {
 		input = fopen("assets/Players/playerTres.txt", "r");
 		//abrindo o txt playerTres no modo "read"
 
-			fscanf(input, "playerNome=%s\nplayerXp=%d\nplayerNivel=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d\n",&ps.playerNome,&ps.playerXp, &ps.playerNivel, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
+			fscanf(input, "playerNome=%s\nplayerCoracao=%d\nplayerIdade=%d\nplayerMundo=%d\nplayerFase=%d",&ps.playerNome,&ps.playerCoracao, &ps.playerIdade,&ps.playerMundo,&ps.playerFase);
 				//lendo os dados dentro do txt e atribuindo seus valores para dentro da struct playerStatus
 
 			if (ps.playerIdade > 0){//!Verificando se o save game existe a partir da idade que o jogador ofereca, caso ela seja 0, o save nao existe.
 
 			// PLAYER 3
 			textprintf_ex(buffer, ubuntu_12, 920,300,makecol(0,204,204), -1,"%4s%s", "Nome: ", ps.playerNome);
-			textprintf_ex(buffer, ubuntu_12, 890,355,makecol(0,204,204), -1,"%4s%i","Xp: ", ps.playerXp);
-			textprintf_ex(buffer, ubuntu_12, 890,410,makecol(0,204,204), -1,"%4s%i","Nivel: ", ps.playerNivel);
-			textprintf_ex(buffer, ubuntu_12, 890,465,makecol(0,204,204), -1,"%4s%i","Idade: ", ps.playerIdade);
-			textprintf_ex(buffer, ubuntu_12, 890,515,makecol(0,204,204), -1,"%4s%i","Mundo: ", ps.playerMundo);
-			textprintf_ex(buffer, ubuntu_12, 890,565,makecol(0,204,204), -1,"%4s%i","Fase: ", ps.playerFase);
+			textprintf_ex(buffer, ubuntu_12, 890,355,makecol(0,204,204), -1,"%4s%i","Idade: ", ps.playerIdade);
+			textprintf_ex(buffer, ubuntu_12, 890,410,makecol(0,204,204), -1,"%4s%i","Mundo: ", ps.playerMundo);
+			textprintf_ex(buffer, ubuntu_12, 890,465,makecol(0,204,204), -1,"%4s%i","Fase: ", ps.playerFase);
 			// PLAYER 3 //!Printando as informações do player Tres uma por uma
 			}
 			else {
