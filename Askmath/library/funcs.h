@@ -116,6 +116,7 @@ int telaSelecaoPers(BITMAP *buffer){
 		mouse_y > 249 && mouse_y <= 635){//aparece um tra�ado preto aqui
 		draw_sprite(buffer, hover1, 0, 0); //aparece a animação de hover quando passa o mouse por cima
 		if(mouse_b == 1){//se o player clilcar com o botão esquerdo aqui, dá load state
+			rest(100);
 			ps.playerNumero = '1';// nesse save
 			loadState();
 			if(ps.playerIdade<=0){
@@ -134,6 +135,7 @@ int telaSelecaoPers(BITMAP *buffer){
 		mouse_y > 249 && mouse_y <= 635){//aparece um tra�ado preto aqui
 		draw_sprite(buffer, hover2, 0, 0);
 			if(mouse_b == 1){
+			rest(100);
 			ps.playerNumero = '2';
 			loadState();
 			if(ps.playerIdade<=0){
@@ -152,6 +154,7 @@ int telaSelecaoPers(BITMAP *buffer){
 		mouse_y > 249 && mouse_y <= 635){//aparece um tra�ado preto aqui
 		draw_sprite(buffer, hover3, 0, 0);
 			if(mouse_b == 1){
+			rest(100);
 			ps.playerNumero = '3';
 			loadState();
 				if(ps.playerIdade<=0){
@@ -597,6 +600,7 @@ int telaMundos(BITMAP *buffer){
 int x = 0, y = 0, i;
 
 	BITMAP* fundo = load_bitmap("assets/telas/askmathMUNDOS.bmp", NULL);
+	BITMAP* botao = load_bitmap("assets/telas/buttonmenuprincipal.bmp", NULL);
 	
 		while(!key[KEY_F10])
 	{
@@ -606,7 +610,19 @@ int x = 0, y = 0, i;
 		if(key[KEY_ESC]) {telaInicial(buffer);}
 
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
+
+		draw_sprite(buffer, botao, 5, 650);//desenhando botão que leva ao menu principal
 		
+		//BOTAO MENU PRINCIPAL
+		if(mouse_x > 0 && mouse_x <= 437 && 
+		mouse_y > 650 && mouse_y <= 709){
+            if (mouse_b == 1){
+				rest(250);
+                telaMenuPrincipal(buffer);
+                rest(250);
+            }
+		}
+
 		//MUNDO 01
 		if(mouse_x > 18 && mouse_x <= 247 && 
 		mouse_y > 17 && mouse_y <= 244){//aparece um tra�ado preto aqui

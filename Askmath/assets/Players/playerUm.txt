@@ -1,4 +1,4 @@
-playerNome=aslas
+playerNome=zsda
 playerCoracao=3
 playerIdade=0
 playerMundo=0

@@ -74,6 +74,8 @@ int jogoFase[5][5] = { 00, 01, 02, 03, 04,    //   11, 21, 31, 41, 51,
 
         contadorCoracao(buffer); //contador dos corações 
 
+        botaoMenuprincipal(buffer);
+
         timerResposta(buffer, 15); //temporizador para resposta 
         
 
@@ -172,6 +174,8 @@ int fase01(BITMAP *buffer){
 
         contadorCoracao(buffer); //contador dos corações 
 
+        botaoMenuprincipal(buffer);
+
         timerResposta(buffer, 15); //temporizador para resposta 
 
 
@@ -268,6 +272,8 @@ int fase11(BITMAP *buffer){
 
         contadorCoracao(buffer); //contador dos corações 
 
+        botaoMenuprincipal(buffer);
+
         timerResposta(buffer, 15); //temporizador para resposta 
 
 
@@ -359,6 +365,8 @@ int fase02(BITMAP *buffer){
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
 
         contadorCoracao(buffer); //contador dos corações 
+
+        botaoMenuprincipal(buffer);
 
         timerResposta(buffer, 15); //temporizador para resposta 
 
@@ -457,6 +465,8 @@ int fase12(BITMAP *buffer){
 
         contadorCoracao(buffer); //contador dos corações 
 
+        botaoMenuprincipal(buffer);
+
         timerResposta(buffer, 15); //temporizador para resposta 
 
 
@@ -553,6 +563,8 @@ int fase22(BITMAP *buffer){
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
 
         contadorCoracao(buffer); //contador dos corações 
+
+        botaoMenuprincipal(buffer);
 
         timerResposta(buffer, 15); //temporizador para resposta 
 
@@ -653,6 +665,8 @@ int fase03(BITMAP *buffer){
 
         contadorCoracao(buffer); //contador dos corações 
 
+        botaoMenuprincipal(buffer);
+
         timerResposta(buffer, 15); //temporizador para resposta 
 
 
@@ -748,6 +762,8 @@ int fase13(BITMAP *buffer){
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
 
         contadorCoracao(buffer); //contador dos corações 
+
+        botaoMenuprincipal(buffer);
 
         timerResposta(buffer, 15); //temporizador para resposta 
 
@@ -846,6 +862,8 @@ int fase23(BITMAP *buffer){
 
         contadorCoracao(buffer); //contador dos corações 
 
+        botaoMenuprincipal(buffer);
+
         timerResposta(buffer, 15); //temporizador para resposta 
 
 
@@ -942,6 +960,8 @@ int fase33(BITMAP *buffer){
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
 
         contadorCoracao(buffer); //contador dos corações 
+
+        botaoMenuprincipal(buffer);
 
         timerResposta(buffer, 15); //temporizador para resposta 
 
@@ -1042,6 +1062,8 @@ int fase04(BITMAP *buffer){
 
         contadorCoracao(buffer); //contador dos corações 
 
+        botaoMenuprincipal(buffer);
+
         timerResposta(buffer, 15); //temporizador para resposta 
 
 
@@ -1138,6 +1160,8 @@ int fase14(BITMAP *buffer){
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
 
         contadorCoracao(buffer); //contador dos corações 
+
+        botaoMenuprincipal(buffer);
 
         timerResposta(buffer, 15); //temporizador para resposta 
 
@@ -1236,6 +1260,8 @@ int fase24(BITMAP *buffer){
 
         contadorCoracao(buffer); //contador dos corações 
 
+        botaoMenuprincipal(buffer);
+
         timerResposta(buffer, 15); //temporizador para resposta 
 
 
@@ -1332,6 +1358,8 @@ int fase34(BITMAP *buffer){
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
 
         contadorCoracao(buffer); //contador dos corações 
+
+        botaoMenuprincipal(buffer);
 
         timerResposta(buffer, 15); //temporizador para resposta 
 
@@ -1430,6 +1458,8 @@ int fase44(BITMAP *buffer){
 		draw_sprite(buffer, fundo, 0, 0);//desenhando tela menu principal no buffer
 
         contadorCoracao(buffer); //contador dos corações 
+
+        botaoMenuprincipal(buffer);
 
         timerResposta(buffer, 15); //temporizador para resposta 
 
@@ -1636,5 +1666,22 @@ int timerResposta(BITMAP *buffer, int segs){
         rect(buffer, 631, 76, 1043, 51, 0xffffff); // desenhando novamente suas linhas 1px a mais para 
         rect(buffer, 632, 77, 1044, 52, 0xffffff);	// "reforça-las" e deixar elas mais grossas
 }
- 
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+int botaoMenuprincipal(BITMAP *buffer){
+
+    BITMAP* botao = load_bitmap("assets/telas/buttonmenuprincipalSEMTEXTO.bmp", NULL);
+
+    draw_sprite(buffer, botao, 0, 0);
+
+
+		if(mouse_x > 0 && mouse_x <= 70 && 
+		mouse_y > 0 && mouse_y <= 70){
+            if (mouse_b == 1){
+                saveState();
+                telaMenuPrincipal(buffer);
+                rest(250);
+            }
+		}
+
+}
 #endif

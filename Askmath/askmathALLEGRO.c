@@ -23,22 +23,11 @@ int main (){
 	install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL);
 	
 	
-	//VARIAVEIS
-
-	//MUSICAS
-
-	//DETERMINANDO NOME DA VARIAVEL PARA TOCAR A MUSICA E O LOCAL DELA
-	SAMPLE *wave = load_sample("assets/musicas/fundomusica.wav");
-	
-	//TOCANDO A MUSICA 24/7
-	//play_sample(wave, 255, 128, 1000, 1);
-	
 	//CRIANDO BUFFER PRO JOGO INTEIRO
 	BITMAP* buffer = create_bitmap(1280,720);
 
 	telaInicial(buffer);
 	
-	destroy_sample(wave);
 	return 0;
 }
 END_OF_MAIN();
