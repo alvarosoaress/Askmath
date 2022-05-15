@@ -1434,7 +1434,6 @@ int fase34(BITMAP *buffer){
 int fase44(BITMAP *buffer){
 
     int x = 0, y = 0, i;
-    r=0, g=255, b=0;
     loadState();
     BITMAP* fundo = load_bitmap("assets/telas/fases/divisao44.bmp", NULL);
 	BITMAP* hover = load_bitmap("assets/telas/askmathHOVERPERGUNTAS.bmp", NULL);

@@ -57,7 +57,7 @@ void saveState(){//sub-rotina para salvar os status atuais do jogador
 
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void loadState(){//sub-rotina para carregar os status atuais do jogador
+void loadState(){//função para carregar os status atuais do jogador
 
 	FILE* input;//ponteiro input para a função FILE
 

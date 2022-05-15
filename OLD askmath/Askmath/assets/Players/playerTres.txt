@@ -1,5 +1,0 @@
-playerNome=halry
-playerXp=0
-playerNivel=0
-playerIdade=0
-playerFase=0

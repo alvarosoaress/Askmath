@@ -1,5 +1,5 @@
-playerNome=sada
+playerNome=sad
 playerCoracao=3
-playerIdade=2
-playerMundo=0
+playerIdade=1
+playerMundo=1
 playerFase=0
